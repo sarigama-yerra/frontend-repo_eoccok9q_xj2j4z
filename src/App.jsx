@@ -1,71 +1,44 @@
+import React from 'react'
+import Hero from './components/Hero'
+import Countdown from './components/Countdown'
+import About from './components/About'
+import Gallery from './components/Gallery'
+import Wishes from './components/Wishes'
+import PartyDetails from './components/PartyDetails'
+
+const NAME = 'Name' // Replace with the birthday girl's name
+const PARTY_DATE = new Date(new Date().getFullYear(), 11, 25, 18, 0, 0) // Dec 25, 6:00 PM this year
+
 function App() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-      {/* Subtle pattern overlay */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.05),transparent_50%)]"></div>
+    <div className="min-h-screen font-['Inter',_'system-ui',_'-apple-system',_'Segoe_UI',_Roboto] bg-white text-slate-800">
+      {/* Hero with Spline background */}
+      <Hero name={NAME} />
 
-      <div className="relative min-h-screen flex items-center justify-center p-8">
-        <div className="max-w-2xl w-full">
-          {/* Header with Flames icon */}
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center justify-center mb-6">
-              <img
-                src="/flame-icon.svg"
-                alt="Flames"
-                className="w-24 h-24 drop-shadow-[0_0_25px_rgba(59,130,246,0.5)]"
-              />
-            </div>
+      {/* Countdown */}
+      <Countdown targetDate={PARTY_DATE} />
 
-            <h1 className="text-5xl font-bold text-white mb-4 tracking-tight">
-              Flames Blue
-            </h1>
+      {/* About */}
+      <About name={NAME} />
 
-            <p className="text-xl text-blue-200 mb-6">
-              Build applications through conversation
-            </p>
-          </div>
+      {/* Gallery */}
+      <Gallery />
 
-          {/* Instructions */}
-          <div className="bg-slate-800/50 backdrop-blur-sm border border-blue-500/20 rounded-2xl p-8 shadow-xl mb-6">
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                1
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Describe your idea</h3>
-                <p className="text-blue-200/80 text-sm">Use the chat panel on the left to tell the AI what you want to build</p>
-              </div>
-            </div>
+      {/* Wishes */}
+      <Wishes />
 
-            <div className="flex items-start gap-4 mb-6">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                2
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Watch it build</h3>
-                <p className="text-blue-200/80 text-sm">Your app will appear in this preview as the AI generates the code</p>
-              </div>
-            </div>
+      {/* Party Details */}
+      <PartyDetails
+        date={PARTY_DATE.toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+        time={PARTY_DATE.toLocaleTimeString(undefined, { hour: '2-digit', minute: '2-digit' })}
+        venue="123 Party Lane, Celebration City"
+        rsvp="#"
+      />
 
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-lg flex items-center justify-center font-bold">
-                3
-              </div>
-              <div>
-                <h3 className="font-semibold text-white mb-1">Refine and iterate</h3>
-                <p className="text-blue-200/80 text-sm">Continue the conversation to add features and make changes</p>
-              </div>
-            </div>
-          </div>
-
-          {/* Footer */}
-          <div className="text-center">
-            <p className="text-sm text-blue-300/60">
-              No coding required • Just describe what you want
-            </p>
-          </div>
-        </div>
-      </div>
+      {/* Footer */}
+      <footer className="py-10 text-center text-slate-500">
+        Made with love • Wishing {NAME} the happiest birthday! 🎂✨
+      </footer>
     </div>
   )
 }
